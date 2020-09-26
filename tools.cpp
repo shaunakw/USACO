@@ -7,7 +7,7 @@ using namespace std;
 template<int size>
 class unionfind {
     private:
-        int ids[size];
+        int ids[size]{};
 
     public:
         unionfind() {
