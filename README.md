@@ -5,6 +5,6 @@ They are split into 3 categories:
 - Practice problems
 - Problems from the Starleague Gold class
 
-### usaco.bat
+### [usaco.bat](usaco.bat) (and [create.py](create.py))
 This is a shell script to generate all the necessary files for a USACO problem in the proper folder.
 (requires python installed)
