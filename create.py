@@ -4,23 +4,33 @@ from datetime import date
 
 loc = sys.argv[1]
 name = sys.argv[2]
-
-paths = {
-    'sl': 'starleague/gold',
-    'comp': f'comp/{date.today().strftime("%b%y")}',
-    'prac': 'practice',
-}
+ext = 'java' if loc == 'club' else 'cpp'
 
 vars_list = [i.upper() for i in sys.argv[3:]]
 nl = '\n'
 tab = '\t'
 
+def join_vars(begin='', join='', end=''):
+    return f'{begin}{join.join(vars_list)}{end}' if len(sys.argv) > 3 else ''
 
-def if_vars(s):
-    return s if len(sys.argv) > 3 else ''
+code = {
+    'java': \
+f'''import java.io.*;
+import java.util.*;
 
+public class {name} {{
+    public static void main(String[] args) throws IOException {{
+        Scanner in = new Scanner(new File("{name}.in"));
+        PrintWriter out = new PrintWriter("{name}.out");
 
-code = \
+        {join_vars(begin='int ', join=f' = in.nextInt();{nl}{tab}{tab}int ', end=' = in.nextInt();')}
+
+        out.close();
+    }}
+}}
+''',
+
+    'cpp': \
 f'''#include <bits/stdc++.h>
 
 #define fori(i, a) for(int i = 0; i < a; ++i)
@@ -34,15 +44,23 @@ void setIO() {{
     freopen("{name}.in", "r", stdin);
     freopen("{name}.out", "w", stdout);
 }}
-{if_vars(f'{nl}int {", ".join(vars_list)};{nl}')}
+{join_vars(begin=f'{nl}int ', join=', ', end=f';{nl}')}
 int main() {{
     setIO();
-    {if_vars(f'cin >> {" >> ".join(vars_list)};{nl}{tab}')}
+    {join_vars(begin='cin >> ', join=' >> ', end=f';{nl}{tab}')}
     
     
     return 0;
 }}
 '''
+}
+
+paths = {
+    'sl': 'starleague/gold',
+    'comp': f'comp/{date.today().strftime("%b%y")}',
+    'prac': 'practice',
+    'club': 'programmingclub'
+}
 
 if loc not in paths:
     print(f'Sorry, \'{loc}\' isn\'t a valid location. Valid locations are: {list(paths.keys())}.')
@@ -54,8 +72,8 @@ else:
 
         open(f'{name}.out', 'x')
         open(f'{name}.in', 'x')
-        file = open(f'{name}.cpp', 'w')
-        file.write(code)
+        file = open(f'{name}.{ext}', 'w')
+        file.write(code[ext])
         file.close()
 
         print('Files successfully created')
