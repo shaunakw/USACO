@@ -13,8 +13,6 @@ int floodMod(int num, int den) {
 }
 
 int main() {
-    freopen("beads.in", "r", stdin);
-    freopen("beads.out", "w", stdout);
     cin >> N;
     fori(i, N) {
         cin >> beads[i];

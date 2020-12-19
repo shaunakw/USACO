@@ -1,15 +1,12 @@
-import java.io.*;
 import java.util.*;
 
 public class lifeguards {
     static Scanner in;
     static PrintWriter out;
-    public static void main(String[] args) throws IOException {
-        in = new Scanner(new File("lifeguards.in"));
-        out = new PrintWriter("lifeguards.out");
+    public static void main(String[] args) {
+        in = new Scanner(System.in);
 
-        out.println(bruteforce2());
-        out.close();
+        System.out.println(bruteforce2());
     }
 
     static int bruteforce1() {

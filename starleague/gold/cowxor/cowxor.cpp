@@ -5,18 +5,10 @@
 
 using namespace std;
 
-void setIO() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    freopen("cowxor.in", "r", stdin);
-    freopen("cowxor.out", "w", stdout);
-}
-
 int N, cows[100000];
 
 // can be faster
 int main() {
-    setIO();
     cin >> N;
 	
     fori(i, N) cin >> cows[i];

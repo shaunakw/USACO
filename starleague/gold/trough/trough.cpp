@@ -5,13 +5,6 @@
 
 using namespace std;
 
-void setIO() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    freopen("trough.in", "r", stdin);
-    freopen("trough.out", "w", stdout);
-}
-
 #define rule pair<bool[20], int>
 
 int N;
@@ -20,7 +13,6 @@ int troughs[20]; // 0 = not sure, 1 = filled, 2 = not filled
 list<rule> rules;
 
 int main() {
-    setIO();
     cin >> N >> M;
 	
     fori(i, M) {

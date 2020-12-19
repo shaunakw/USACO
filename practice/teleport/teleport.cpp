@@ -4,20 +4,12 @@
 
 using namespace std;
 
-void setIO() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    freopen("teleport.in", "r", stdin);
-    freopen("teleport.out", "w", stdout);
-}
-
 int A;
 int B;
 int X;
 int Y;
 
 int main() {
-    setIO();
     cin >> A >> B >> X >> Y;
 	
     int d1 = abs(A - B);

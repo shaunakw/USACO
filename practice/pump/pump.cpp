@@ -5,13 +5,6 @@
 
 using namespace std;
 
-void setIO() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    freopen("pump.in", "r", stdin);
-    freopen("pump.out", "w", stdout);
-}
-
 struct path {
     int dest;
     int cost;
@@ -37,7 +30,6 @@ void dfs(int x, set<int> prev, int cost, int flow) {
 
 // slow
 int main() {
-    setIO();
     cin >> N >> M;
 	
     fori(i, M) {

@@ -1,10 +1,8 @@
-import java.io.*;
 import java.util.*;
 
 public class speeding {
-    public static void main(String[] args) throws IOException {
-        Scanner in = new Scanner(new File("speeding.in"));
-        PrintWriter out = new PrintWriter("speeding.out");
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
 
         int N = in.nextInt();
         int M = in.nextInt();
@@ -41,7 +39,6 @@ public class speeding {
             speeding = Math.max(speeding, cowSpeed[cow] - segmentLimit[segment]);
         }
 
-        out.println(speeding);
-        out.close();
+        System.out.println(speeding);
     }
 }

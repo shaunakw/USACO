@@ -1,8 +1,5 @@
-inp = open('whereami.in', 'r')
-out = open('whereami.out', 'w')
-
-N = int(inp.readline())
-farms = inp.readline()
+N = int(input())
+farms = input()
 
 k = N
 for i in range(1, N):
@@ -17,5 +14,4 @@ for i in range(1, N):
         k = i
         break
 
-out.write(str(k))
-out.close()
+print(str(k))

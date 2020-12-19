@@ -5,18 +5,7 @@
 
 using namespace std;
 
-void setIO() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    freopen("times17.in", "r", stdin);
-    freopen("times17.out", "w", stdout);
-}
-
-
-
 int main() {
-    setIO();
-    
     string s; cin >> s;
     if (s.size() < 5) {
         string temp = s;

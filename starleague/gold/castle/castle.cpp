@@ -18,9 +18,6 @@ int root(int i) {
 }
 
 int main() {
-    freopen("castle.in", "r", stdin);
-    freopen("castle.out", "w", stdout);
-
     cin >> M >> N;
     fori(i, N) {
         fori(j, M) {

@@ -1,10 +1,8 @@
-import java.io.*;
 import java.util.*;
 
 public class whereami {
-    public static void main(String[] args) throws IOException {
-        Scanner in = new Scanner(new File("whereami.in"));
-        PrintWriter out = new PrintWriter("whereami.out");
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
 
         int N = in.nextInt();
         String farms = in.next();
@@ -27,7 +25,6 @@ public class whereami {
             }
         }
 
-        out.println(k);
-        out.close();
+        System.out.println(k);
     }
 }
