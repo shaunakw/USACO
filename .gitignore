@@ -1,4 +1,11 @@
+# IDE/Editor files
 .idea
+.vscode
+
+# CMake
 cmake-build*
+CMakeLists.txt
+
+# Compiled files
 *.exe
 *.class
