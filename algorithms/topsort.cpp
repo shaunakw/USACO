@@ -2,7 +2,8 @@
 
 using namespace std;
 
-vector<int> topologicalSort(vector<vector<int>>& adjList) {
+// Returns order of topological sort
+vector<int> topSort(vector<vector<int>>& adjList) {
     int size = adjList.size();
     vector<int> inDegrees(size, 0);
 
