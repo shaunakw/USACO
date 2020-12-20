@@ -11,6 +11,13 @@
 
 using namespace std;
 
+void setIO() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    freopen("perimeter.in", "r", stdin);
+    freopen("perimeter.out", "w", stdout);
+}
+
 int N;
 set<point> field;
 bool visitedStart;
@@ -67,6 +74,7 @@ void trace(int x, int y, int dir) {
 }
 
 int main() {
+    setIO();
     cin >> N;
 
     fori(i, N) {

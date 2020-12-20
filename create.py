@@ -15,15 +15,17 @@ def join_vars(begin='', join='', end=''):
 
 code = {
     'java': \
-f'''import java.util.*;
+f'''import java.io.*;
+import java.util.*;
 
 public class {name} {{
-    public static void main(String[] args) {{
-        Scanner in = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {{
+        Scanner in = new Scanner(new File("{name}.in"));
+        PrintWriter out = new PrintWriter("{name}.out");
 
         {join_vars(begin='int ', join=f' = in.nextInt();{nl}{tab}{tab}int ', end=' = in.nextInt();')}
-        
-        
+
+        out.close();
     }}
 }}
 ''',
@@ -36,9 +38,17 @@ f'''#include <bits/stdc++.h>
 
 using namespace std;
 
+void setIO() {{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    freopen("{name}.in", "r", stdin);
+    freopen("{name}.out", "w", stdout);
+}}
 {join_vars(begin=f'{nl}int ', join=', ', end=f';{nl}')}
 int main() {{
+    setIO();
     {join_vars(begin='cin >> ', join=' >> ', end=f';{nl}{tab}')}
+    
     
     return 0;
 }}
@@ -60,10 +70,12 @@ else:
         os.makedirs(path)
         os.chdir(path)
 
+        open(f'{name}.out', 'x')
+        open(f'{name}.in', 'x')
         file = open(f'{name}.{ext}', 'w')
         file.write(code[ext])
         file.close()
 
-        print('Files successfully created.')
+        print('Files successfully created')
     except OSError:
         print(f'Sorry, \'{name}\' already exists in that location.')

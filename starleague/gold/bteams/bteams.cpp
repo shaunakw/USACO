@@ -27,6 +27,8 @@ bool combination(int n) {
 }
 
 int main() {
+    freopen("bteams.in", "r", stdin);
+    freopen("bteams.out", "w", stdout);
     fori(i, 12) cin >> cows[i];
 
     fori(i, total) {

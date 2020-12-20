@@ -7,6 +7,10 @@ using namespace std;
 int cows[3];
 
 int main() {
+    freopen("herding.in", "r", stdin);
+    freopen("herding.out", "w", stdout);
+    auto i = cows + 3;
+    
     cin >> cows[0] >> cows[1] >> cows[2];
     sort(cows, cows + 3);
 

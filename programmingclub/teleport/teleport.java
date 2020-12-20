@@ -1,8 +1,10 @@
+import java.io.*;
 import java.util.*;
 
 public class teleport {
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        Scanner in = new Scanner(new File("teleport.in"));
+        PrintWriter out = new PrintWriter("teleport.out");
 
         int a = in.nextInt();
         int b = in.nextInt();
@@ -13,6 +15,8 @@ public class teleport {
         int d2 = Math.abs(a - x) + Math.abs(b - y);
         int d3 = Math.abs(a - y) + Math.abs(b - x);
 
-        System.out.println(Math.min(d1, Math.min(d2, d3)));
+        out.println(Math.min(d1, Math.min(d2, d3)));
+
+        out.close();
     }
 }

@@ -9,6 +9,9 @@ int buckets[3];
 int milk[3];
 
 int main() {
+    freopen("mixmilk.in", "r", stdin);
+    freopen("mixmilk.out", "w", stdout);
+
     fori(N) cin >> buckets[i] >> milk[i];
 
     fori(100) {

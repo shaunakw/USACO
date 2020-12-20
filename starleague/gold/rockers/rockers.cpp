@@ -5,6 +5,13 @@
 
 using namespace std;
 
+void setIO() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    freopen("rockers.in", "r", stdin);
+    freopen("rockers.out", "w", stdout);
+}
+
 int N, T, M, songs[20];
 
 bool checkbit(int n, int bit) {
@@ -12,6 +19,7 @@ bool checkbit(int n, int bit) {
 }
 
 int main() {
+    setIO();
     cin >> N >> T >> M;
 	
     fori(i, N) cin >> songs[i];

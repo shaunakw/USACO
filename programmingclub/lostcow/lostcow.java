@@ -1,8 +1,10 @@
+import java.io.*;
 import java.util.*;
 
 public class lostcow {
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        Scanner in = new Scanner(new File("lostcow.in"));
+        PrintWriter out = new PrintWriter("lostcow.out");
 
         int X = in.nextInt();
         int Y = in.nextInt();
@@ -16,6 +18,7 @@ public class lostcow {
         }
 
         int total = (int) (Math.pow(2, iteration) - 1) * 2 + (int) Math.abs(Y - X);
-        System.out.println(total);
+        out.println(total);
+        out.close();
     }
 }
