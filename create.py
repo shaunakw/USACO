@@ -1,5 +1,4 @@
-import os
-import sys
+import os, sys
 from datetime import date
 
 loc = sys.argv[1]
@@ -12,6 +11,14 @@ tab = '\t'
 
 def join_vars(begin='', join='', end=''):
     return f'{begin}{join.join(vars_list)}{end}' if len(sys.argv) > 3 else ''
+
+setIO = \
+f'''void setIO() {{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    freopen("{name}.in", "r", stdin);
+    freopen("{name}.out", "w", stdout);
+}}'''
 
 code = {
     'java': \
@@ -32,23 +39,18 @@ public class {name} {{
 
     'cpp': \
 f'''#include <bits/stdc++.h>
-
-#define fori(i, a) for(int i = 0; i < a; ++i)
-#define trav(i, a) for(auto& i : a)
-
 using namespace std;
 
-void setIO() {{
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    freopen("{name}.in", "r", stdin);
-    freopen("{name}.out", "w", stdout);
-}}
-{join_vars(begin=f'{nl}int ', join=', ', end=f';{nl}')}
+#define fori(i, a) for(int i = 0; i < (a); ++i)
+#define trav(i, a) for(auto& i : (a))
+
+typedef vector<int> vi;
+typedef pair<int, int> pi;
+{f'{nl}{setIO}{nl}' if loc != 'comp' else ''}
+{join_vars(begin='int ', join=', ', end=f';{nl}')}
+
 int main() {{
-    setIO();
-    {join_vars(begin='cin >> ', join=' >> ', end=f';{nl}{tab}')}
-    
+    {f'setIO();{nl}{tab}' if loc != 'comp' else ''}{join_vars(begin='cin >> ', join=' >> ', end=f';{nl}{tab}')}
     
     return 0;
 }}
@@ -70,12 +72,14 @@ else:
         os.makedirs(path)
         os.chdir(path)
 
-        open(f'{name}.out', 'x')
-        open(f'{name}.in', 'x')
         file = open(f'{name}.{ext}', 'w')
         file.write(code[ext])
         file.close()
 
-        print('Files successfully created')
+        if loc != 'comp':
+            open(f'{name}.out', 'x')
+            open(f'{name}.in', 'x')
+
+        print('Files successfully created.')
     except OSError:
         print(f'Sorry, \'{name}\' already exists in that location.')
