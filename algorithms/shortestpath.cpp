@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
-
 using namespace std;
+
+#define fori(i, a) for (int i = 0; i < (a); ++i)
 
 // Returns vector of shortest distance to each node
 vector<int> dijkstra(vector<vector<pair<int, int>>>& adjList, int source) {
@@ -22,4 +23,17 @@ vector<int> dijkstra(vector<vector<pair<int, int>>>& adjList, int source) {
         }
     }
     return distances;
+}
+
+// Returns adjacency matrix with shortest distance (worse in a sparse graph)
+vector<vector<int>> floydWarshall(vector<vector<int>> adjMat) {
+    int size = adjMat.size();
+    fori(i, size) {
+        fori(j, size) {
+            fori(k, size) {
+                adjMat[i][j] = min(adjMat[i][j], adjMat[i][k] + adjMat[k][j]);
+            }
+        }
+    }
+    return adjMat;
 }
