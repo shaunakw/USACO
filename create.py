@@ -46,6 +46,7 @@ using namespace std;
 
 typedef vector<int> vi;
 typedef pair<int, int> pi;
+typedef vector<pair<int, int>> vpi;
 {f'{nl}{setIO}{nl}' if loc != 'comp' else ''}
 {join_vars(begin='int ', join=', ', end=f';{nl}')}
 
