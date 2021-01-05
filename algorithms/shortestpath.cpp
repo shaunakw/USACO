@@ -2,6 +2,7 @@
 using namespace std;
 
 #define fori(i, a) for (int i = 0; i < (a); ++i)
+#define trav(i, a) for(auto& i : (a))
 
 // Returns vector of shortest distance to each node
 vector<int> dijkstra(vector<vector<pair<int, int>>>& adjList, int source) {
@@ -15,7 +16,7 @@ vector<int> dijkstra(vector<vector<pair<int, int>>>& adjList, int source) {
         pq.pop();
         if (closest.first > distances[closest.second]) continue;
 
-        for (auto& i : adjList[closest.first]) {
+        trav(i, adjList[closest.first]) {
             if (distances[i.first] > distances[closest.first] + i.second) {
                 distances[i.first] = distances[closest.first] + i.second;
                 pq.push({distances[i.first], i.first});

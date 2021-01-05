@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
-
 using namespace std;
+
+#define fori(i, a) for (int i = 0; i < (a); ++i)
+#define trav(i, a) for(auto& i : (a))
 
 // Returns cost of weighted MST
 int mst(vector<vector<pair<int, int>>>& adjList) {
@@ -16,7 +18,7 @@ int mst(vector<vector<pair<int, int>>>& adjList) {
 
         visited[closest.second] = true;
         cost += closest.first;
-        for (auto& i : adjList[closest.second]) {
+        trav(i, adjList[closest.second]) {
             if (!visited[i.first]) pq.push({i.second, i.first});
         }
     }
