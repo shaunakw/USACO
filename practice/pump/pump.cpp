@@ -18,40 +18,59 @@ struct path {
     int flow;
 };
 
-int N, M;
-vector<path> graph[1000];
-double res;
-
-void dfs(int x, set<int> prev, int cost, int flow) {
-    if (x == N - 1) {
-        res = max(res, (double) flow / cost);
-        return;
-    }
-    prev.insert(x);
-    trav(i, graph[x]) {
-        if (prev.find(i.dest) == prev.end()) {
-            dfs(i.dest, prev, cost + i.cost, min(flow, i.flow));
-        }
-    }
+double value(path& p) {
+    return (double) p.flow / p.cost;
 }
 
-// slow
+double value(pair<int, int>& p) {
+    return (double) p.second / p.first;
+}
+
+bool compare(path x, path y) {
+    return value(x) < value(y);
+}
+
+int N, M;
+
+double dijkstra(vector<vector<path>>& adjList, int source) {
+    vector<pair<int, int>> paths(N, {1, 0}); // cost, flow
+    priority_queue<path, vector<path>, decltype(&compare)> pq(compare);
+    pq.push({source, 0, INT_MAX});
+    paths[source] = {0, INT_MAX};
+
+    while (!pq.empty()) {
+        path closest = pq.top();
+        pq.pop();
+
+        if (value(closest) < value(paths[closest.dest])) continue;
+
+        for (auto& i : adjList[closest.dest]) {
+            path newPath = {i.dest, paths[closest.dest].first + i.cost, min(paths[closest.dest].second, i.flow)};
+            if (value(paths[i.dest]) < value(newPath)) {
+                paths[i.dest] = {newPath.cost, newPath.flow};
+                pq.push(newPath);
+            }
+        }
+    }
+    return value(paths[N - 1]);
+}
+
 int main() {
     setIO();
     cin >> N >> M;
-	
+
+    vector<vector<path>> adjList(N);
     fori(i, M) {
         int a, b, c, f;
         cin >> a >> b >> c >> f;
         path pa{b - 1, c, f};
         path pb{a - 1, c, f};
-        graph[a - 1].push_back(pa);
-        graph[b - 1].push_back(pb);
+        adjList[a - 1].push_back(pa);
+        adjList[b - 1].push_back(pb);
     }
 
-    set<int> prev;
-    dfs(0, prev, 0, INT_MAX);
-    cout << (int) (res * 1000000);
-    
+    cout << (int) (dijkstra(adjList, 0) * 1000000);
+
     return 0;
 }
+
