@@ -3,9 +3,13 @@
 .vscode
 
 # CMake
-cmake-build*
+cmake-build-debug
 CMakeLists.txt
 
 # Compiled files
 *.exe
 *.class
+
+# USACO I/O files
+*.in
+*.out
