@@ -7,7 +7,7 @@ echo.
 
 if [%1] == [] goto :noName
 if [%2] == [] goto :noLoc
-cd %HOMEPATH%\Developer\USACO
+cd %DEVELOPER%\USACO
 python create.py %1 %2 %3 %4 %5 %6
 goto :exit
 
