@@ -44,8 +44,7 @@ using namespace std;
 #define fori(i, a) for(int i = 0; i < (a); ++i)
 #define trav(i, a) for(auto& i : (a))
 
-typedef vector<int> vi;
-typedef pair<int, int> pi;
+
 {f'{nl}{setIO}{nl}' if loc != 'comp' else ''}
 {join_vars(begin='int ', join=', ', end=f';{nl}')}
 
