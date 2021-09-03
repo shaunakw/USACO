@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+echo USACO File Generator
+
+if [ $# -eq 0 ]; then
+  echo Please choose a location for the files.
+elif [ $# -eq 1 ]; then
+  echo Please choose a problem name.
+else
+  python3 create.py $@
+fi
