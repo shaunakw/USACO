@@ -6,6 +6,6 @@ They are split into 4 categories:
 - Problems from the Starleague Gold class
 - Problems from Programming Club
 
-### [usaco.bat](usaco.bat)
+### [usaco.bat](usaco)
 A shell script to generate all the necessary files for a USACO problem in the proper folder.
 (requires python installed)
