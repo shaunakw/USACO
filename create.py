@@ -5,7 +5,7 @@ loc = sys.argv[1]
 name = sys.argv[2]
 ext = 'java' if loc == 'club' else 'cpp'
 
-vars_list = [i.upper() for i in sys.argv[3:]]
+vars_list = sys.argv[3:]
 nl = '\n'
 tab = '\t'
 
@@ -43,8 +43,6 @@ using namespace std;
 
 #define fori(i, a) for(int i = 0; i < (a); ++i)
 #define trav(i, a) for(auto& i : (a))
-
-
 {f'{nl}{setIO}{nl}' if loc != 'comp' else ''}
 {join_vars(begin='int ', join=', ', end=f';{nl}')}
 
