@@ -56,7 +56,7 @@ public class lifeguards {
         for (int i = 0; i < N; i++) {
             int total = 0;
             for (ArrayList<Integer> time : times) {
-                if (time.size() > 1 || (time.size() == 1 && time.get(0) != i)) {
+                if (time.sizes() > 1 || (time.sizes() == 1 && time.get(0) != i)) {
                     total++;
                 }
             }

@@ -4,8 +4,8 @@ using namespace std;
 int nums[7];
 
 int main() {
-    for (int i = 0; i < 7; i++) {
-        cin >> nums[i];
+    for (int& num : nums) {
+        cin >> num;
     }
 
     sort(nums, nums + 7);
