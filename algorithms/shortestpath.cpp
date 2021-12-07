@@ -26,7 +26,7 @@ vector<int> dijkstra(vector<vector<pair<int, int>>>& adjList, int source) {
     return distances;
 }
 
-// Returns adjacency matrix with shortest distance (worse in a sparse graph)
+// Returns adjacency matrix with the shortest distance (worse in a sparse graph)
 vector<vector<int>> floydWarshall(vector<vector<int>> adjMat) {
     int size = adjMat.size();
     fori(i, size) {

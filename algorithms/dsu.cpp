@@ -8,13 +8,13 @@ typedef vector<int> vi;
 
 int N = 8;
 vi parent;
-vi size;
+vi sizes;
 
 // Initialize vector
 void init() {
     parent.resize(N);
     fori(i, N) parent[i] = i;
-    size.resize(N, 1);
+    sizes.resize(N, 1);
 }
 
 // Get subset of node i
@@ -32,8 +32,8 @@ void unite(int a, int b) {
     b = find(b);
 
     if (a == b) return;
-    if (size[b] > size[a]) swap(a, b);
+    if (sizes[b] > sizes[a]) swap(a, b);
 
     parent[b] = a;
-    size[a] += size[b];
+    sizes[a] += sizes[b];
 }
