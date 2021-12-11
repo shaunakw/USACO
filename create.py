@@ -3,77 +3,45 @@ from datetime import date
 
 loc = sys.argv[1]
 name = sys.argv[2]
-ext = 'java' if loc == 'club' else 'cpp'
-
-vars_list = sys.argv[3:]
-nl = '\n'
-tab = '\t'
+vars = sys.argv[3:]
 
 def join_vars(begin='', join='', end=''):
-    return f'{begin}{join.join(vars_list)}{end}' if len(sys.argv) > 3 else ''
+    return f'{begin}{join.join(vars)}{end}' if len(sys.argv) > 3 else ''
 
-setIO = \
-f'''void setIO() {{
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    freopen("{name}.in", "r", stdin);
-    freopen("{name}.out", "w", stdout);
-}}'''
+vars_cpp_init = join_vars(begin='int ', join=', ', end=';')
+vars_cpp_read = join_vars(begin='cin >> ', join=' >> ', end=';')
+vars_java = join_vars(begin='int ', join=f' = in.nextInt();\n\t\tint ', end=' = in.nextInt();')
 
-code = {
-    'java': \
-f'''import java.io.*;
-import java.util.*;
-
-public class {name} {{
-    public static void main(String[] args) throws IOException {{
-        Scanner in = new Scanner(new File("{name}.in"));
-        PrintWriter out = new PrintWriter("{name}.out");
-
-        {join_vars(begin='int ', join=f' = in.nextInt();{nl}{tab}{tab}int ', end=' = in.nextInt();')}
-
-        out.close();
-    }}
-}}
-''',
-
-    'cpp': \
-f'''#include <bits/stdc++.h>
-using namespace std;
-
-#define fori(i, a) for(int i = 0; i < (a); ++i)
-#define trav(i, a) for(auto& i : (a))
-{f'{nl}{setIO}{nl}' if loc != 'comp' else ''}
-{join_vars(begin='int ', join=', ', end=f';{nl}')}
-
-int main() {{
-    {f'setIO();{nl}{tab}' if loc != 'comp' else ''}{join_vars(begin='cin >> ', join=' >> ', end=f';{nl}{tab}')}
-    
-    return 0;
-}}
-'''
+config = { # [path, template, input_type]
+    'sl': ['starleague/gold', 'cpp_old', 'inout'],
+    'comp': [f'comp/{date.today().strftime("%b%y")}', 'cpp', 'none'],
+    'prac': ['practice', 'cpp_old', 'inout'],
+    'club': ['programmingclub', 'java_old', 'inout'],
 }
 
-paths = {
-    'sl': 'starleague/gold',
-    'comp': f'comp/{date.today().strftime("%b%y")}',
-    'prac': 'practice',
-    'club': 'programmingclub'
-}
-
-if loc not in paths:
-    print(f'Sorry, \'{loc}\' isn\'t a valid location. Valid locations are: {list(paths.keys())}.')
+if loc not in config:
+    print(f'Sorry, \'{loc}\' isn\'t a valid location. Valid locations are: {list(config.keys())}.')
 else:
-    path = f'{paths[loc]}/{name}'
+    path = f'{config[loc][0]}/{name}'
+    template = config[loc][1]
+    input_type = config[loc][2]
+    ext = template.split('_')[0]
+
+    code = open(f'templates/{template}.txt').read() \
+        .replace('%name%', name) \
+        .replace('%vars_cpp_init%', vars_cpp_init) \
+        .replace('%vars_cpp_read%', vars_cpp_read) \
+        .replace('%vars_java%', vars_java)
+
     try:
         os.makedirs(path)
         os.chdir(path)
 
         file = open(f'{name}.{ext}', 'w')
-        file.write(code[ext])
+        file.write(code)
         file.close()
 
-        if loc != 'comp':
+        if input_type == 'inout':
             open(f'{name}.out', 'x')
             open(f'{name}.in', 'x')
 

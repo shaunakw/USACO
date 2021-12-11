@@ -1,3 +1,9 @@
+# Executables with no extension
+*
+!*.*
+!*/
+!usaco
+
 # IDE/Editor files
 .idea
 .vscode
@@ -7,7 +13,6 @@ cmake-build-debug
 CMakeLists.txt
 
 # Compiled files
-*.o
 *.exe
 *.class
 

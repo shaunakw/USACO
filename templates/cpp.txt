@@ -1,0 +1,14 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define fori(i, a) for(int (i) = 0; (i) < (a); ++(i))
+#define trav(i, a) for(auto& (i) : (a))
+
+%vars_cpp_init%
+
+int main() {
+    %vars_cpp_read%
+    
+    
+    return 0;
+}

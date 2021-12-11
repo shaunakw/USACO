@@ -1,0 +1,14 @@
+import java.io.*;
+import java.util.*;
+
+public class %name% {
+    public static void main(String[] args) throws IOException {
+        Scanner in = new Scanner(new File("%name%.in"));
+        PrintWriter out = new PrintWriter("%name%.out");
+        
+        %vars_java%
+        
+        
+        out.close();
+    }
+}
