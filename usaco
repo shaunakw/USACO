@@ -7,5 +7,5 @@ if [ $# -eq 0 ]; then
 elif [ $# -eq 1 ]; then
   echo Please choose a problem name.
 else
-  python3 create.py "$@"
+  python3 generate.py "$@"
 fi
