@@ -1,5 +1,5 @@
 # USACO Problems
-All the USACO problems I've attempted (in C++).
+Some of the USACO problems I've attempted (in C++).
 They are split into 4 categories:
 - Competition problems
 - Practice problems
